@@ -56,8 +56,9 @@ class Grid extends Component {
   render() {
     const {data} = this.state
     const {url} = this.props.match
+    const {loaded} = this.state
 
-    return(
+    return loaded ? (
       <div className="row justify-content-center">
         {data.map(({id, title, location, year, spread, image}, index) => (
           <Card
@@ -72,6 +73,12 @@ class Grid extends Component {
           />
         ))}
       </div>
+    ) : ( 
+    <div className="row justify-content-center">
+      <div className="spinner-grow text-pink" role="status">
+        <span className="sr-only">Loading...</span>
+      </div>
+    </div>
     );
   }
 }

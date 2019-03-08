@@ -34,7 +34,7 @@ class ProjectPage extends Component {
     const {year} = this.props.location.state
     const {spread} = this.props.location.state
 
-    return(
+    return loaded ? (
       <div>
         <div className="row mb-2">
           <div className="col-sm-3 justify-content-center d-flex"><h5 className="mr-1">{title}</h5></div>
@@ -67,6 +67,12 @@ class ProjectPage extends Component {
           </div>
         </div>
       </div>
+    ) : (
+    <div className="row justify-content-center">
+      <div className="spinner-grow text-pink" role="status">
+        <span className="sr-only">Loading...</span>
+      </div>
+    </div>
     );
   }
 }

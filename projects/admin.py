@@ -30,4 +30,3 @@ class ProjectAdmin(GalleryMultiuploadMixing):
         return obj.delete()
 
 
-admin.site.register(models.Project, ProjectAdmin)

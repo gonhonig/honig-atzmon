@@ -35,7 +35,7 @@ const routes = [
     component: Generic,
   },
   {
-    path: `/צור קשר`,
+    path: `/צור-קשר`,
     component: Contact,
   },
   {

@@ -1,7 +1,6 @@
 from django.contrib import admin
 from django.shortcuts import get_object_or_404
 from . import models
-from multiupload.admin import MultiUploadAdmin
 
 
 class ImageInlineAdmin(admin.TabularInline):
@@ -23,20 +22,12 @@ class GalleryMultiuploadMixing(object):
         }
 
 
-class ProjectAdmin(GalleryMultiuploadMixing, MultiUploadAdmin):
+class ProjectAdmin(GalleryMultiuploadMixing):
     inlines = [ImageInlineAdmin,]
-    multiupload_form = True
-    multiupload_list = False
 
     def delete_file(self, pk, request):
         obj = get_object_or_404(Image, pk=pk)
         return obj.delete()
-
-
-class ImageAdmin(GalleryMultiuploadMixing, MultiUploadAdmin):
-    multiupload_form = False
-    multiupload_list = True
-    multiupload_limitconcurrentuploads = 6
 
 
 admin.site.register(models.Project, ProjectAdmin)
